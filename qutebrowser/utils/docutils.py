@@ -51,7 +51,7 @@ def docs_up_to_date(path):
     html_path = os.path.join(qutebrowser.basedir, 'html', 'doc', path)
     filename = os.path.splitext(path)[0]
     asciidoc_path = os.path.join(qutebrowser.basedir, os.path.pardir,
-                                 'doc', 'help', filename + '.asciidoc')
+                                 'doc', 'help', filename + '.rst')
     try:
         html_time = os.path.getmtime(html_path)
         asciidoc_time = os.path.getmtime(asciidoc_path)

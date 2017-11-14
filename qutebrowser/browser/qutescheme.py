@@ -326,8 +326,7 @@ def qute_help(url):
     else:
         urlpath = urlpath.lstrip('/')
     if not docutils.docs_up_to_date(urlpath):
-        message.error("Your documentation is outdated! Please re-run "
-                      "scripts/asciidoc2html.py.")
+        message.error("Your documentation is outdated! Please re-run Sphinx.")
 
     path = 'html/doc/{}'.format(urlpath)
     if not urlpath.endswith('.html'):
@@ -337,7 +336,7 @@ def qute_help(url):
 
     try:
         data = utils.read_file(path)
-    except OSError:
+    except FileNotFoundError:
         # No .html around, let's see if we find the asciidoc
         asciidoc_path = path.replace('.html', '.asciidoc')
         if asciidoc_path.startswith('html/doc/'):
